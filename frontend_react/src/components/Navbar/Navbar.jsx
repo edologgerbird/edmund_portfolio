@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { images } from "../../constants";
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = ({ active }) => {
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);

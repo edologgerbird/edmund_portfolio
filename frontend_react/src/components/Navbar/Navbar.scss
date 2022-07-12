@@ -19,7 +19,8 @@
   justify-content: space-between;
   align-items: center;
 
-  background: var(--white-color);
+  // background: var(--white-color);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 1px 10px 0 rgba(37, 37, 37, 0.37);
   position: fixed;
   z-index: 2;
@@ -73,28 +74,29 @@
       width: 100%;
       height: 1px;
       background: transparent;
-      transition: all 0.4s ease-in-out;
+      transition: all 0.2s ease-in-out;
       margin-bottom: 5px;
     }
 
     a {
-      color: var(--gray-color);
+      color: var(--primary-color);
       text-decoration: none;
       flex-direction: column;
 
       text-transform: uppercase;
       font-weight: 500;
 
-      transition: all 0.4s ease-in-out;
+      transition: all 0.2s ease-in-out;
 
       &:hover {
-        color: var(--primary-color);
+        color: var(--tertiery-color);
+        font-weight: 550;
       }
     }
 
     &:hover {
       div {
-        background: var(--primary-color);
+        background: var(--tertiery-color);
       }
     }
   }
