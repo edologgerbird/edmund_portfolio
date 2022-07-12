@@ -3,12 +3,8 @@
   width: 100%;
   flex-direction: column;
   margin-top: 1rem;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
   margin-left: 2rem;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 800px) {
     margin-left: 0rem;
   }
 }
@@ -21,7 +17,7 @@
   flex-wrap: wrap;
 
   margin: 0rem 0 14rem;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 800px) {
     margin: 0rem 0 5rem;
   }
 
