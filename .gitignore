@@ -349,4 +349,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-.env
+
+# backend_sanity stuff
+backend_sanity/node_modules/
