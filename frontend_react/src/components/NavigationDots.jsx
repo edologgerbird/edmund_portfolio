@@ -16,3 +16,5 @@ const NavigationDots = ({ active }) => (
 );
 
 export default NavigationDots;
+
+// "#ec4556"

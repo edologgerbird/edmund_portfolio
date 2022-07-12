@@ -27,7 +27,7 @@
 .app__flex {
   display: flex;
   justify-content: center;
-  align-items: center !important;
+  align-items: center; // !important;
 }
 
 .app__wrapper {
@@ -71,7 +71,7 @@
 }
 
 .head-text {
-  font-size: 2.75rem;
+  font-size: 2.1rem;
   font-weight: 150;
   text-align: center;
   color: var(--white-color);
@@ -91,11 +91,16 @@
   }
 }
 
+.noDecoration {
+  text-decoration: none;
+}
+
 .p-text {
   font-size: 0.8rem;
   text-align: left;
   color: var(--primary-color);
   line-height: 1.5;
+  text-decoration: none;
 
   @media screen and (min-width: 2000px) {
     font-size: 0.95rem;
@@ -107,7 +112,7 @@
   font-weight: 800;
   color: var(--primary-color);
   text-align: left;
-
+  text-decoration: none !important;
   @media screen and (min-width: 2000px) {
     font-size: 1.4rem;
   }
@@ -119,13 +124,12 @@
 
 .app__navigation {
   display: flex;
-  position: fixed;
-  right: 1rem;
-  top: 40%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 1rem;
+  margin-top: 1rem;
+  background-color: rgba(255, 255, 255, 0);
 
   .app__navigation-dot {
     width: 10px;
