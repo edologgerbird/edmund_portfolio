@@ -1,0 +1,82 @@
+.app__footer {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+  margin-left: 2rem;
+  @media screen and (max-width: 700px) {
+    margin-left: 0rem;
+  }
+}
+
+.app__footer-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin: 0rem 0 14rem;
+  @media screen and (max-width: 700px) {
+    margin: 0rem 0 5rem;
+  }
+
+  h4 {
+    font-weight: 200;
+    text-transform: uppercase;
+    padding: 1rem 0 0.5rem 0;
+    font-size: 0.8rem;
+
+    @media screen and (min-width: 2000px) {
+      font-size: 1rem;
+    }
+  }
+
+  a {
+    font-weight: 200;
+    text-decoration: none;
+    color: var(--tertiery-color);
+    @media screen and (min-width: 2000px) {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.app__footer-copyright {
+  padding: 1rem 0 2rem 0;
+  p {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+}
+
+.app__footer-badges {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+
+  a {
+    margin: 1rem 1rem 0 1rem;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.3s ease-in-out;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

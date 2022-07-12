@@ -34,6 +34,9 @@
 .app__header-badge {
   width: 100%;
   margin-left: 2rem;
+  @media screen and (max-width: 700px) {
+    margin-left: 0rem;
+  }
 
   .tag-cmp {
     margin-top: 0.2rem;

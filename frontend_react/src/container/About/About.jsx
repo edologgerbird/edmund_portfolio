@@ -7,12 +7,18 @@ import { urlFor, client } from "../../client";
 
 const About = () => {
   const [abouts, setAbouts] = useState([]);
+  const [bio, setBio] = useState([]);
 
   useEffect(() => {
+    const bioQuery = '*[_type == "bio"]';
     const query = '*[_type == "abouts"]';
 
     client.fetch(query).then((data) => {
       setAbouts(data);
+    });
+
+    client.fetch(bioQuery).then((data) => {
+      setBio(data);
     });
   }, []);
 
@@ -21,6 +27,18 @@ const About = () => {
       <h2 className="head-text">
         Enabling <span>Data-Driven</span> Decision-making <br />
       </h2>
+
+      <div className="bio">
+        {bio.map((bio_content) => (
+          <>
+            <img src={urlFor(bio_content.imgUrl)} atl={bio_content.ImgUrl} />
+            <div className="bio-text">
+              <h4>About Me</h4>
+              <p>{bio_content.description}</p>
+            </div>
+          </>
+        ))}
+      </div>
 
       <div className="app__profiles">
         {abouts.map((about, index) => (
