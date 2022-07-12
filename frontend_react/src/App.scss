@@ -23,7 +23,7 @@
 .app__flex {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center !important;
 }
 
 .app__wrapper {
@@ -52,11 +52,25 @@
   }
 }
 
+.subtitle {
+  font-size: 2.3rem;
+  font-weight: 200;
+  text-align: center;
+  color: var(--white-color);
+}
+
+.title {
+  font-size: 5.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--white-color);
+}
+
 .head-text {
   font-size: 2.75rem;
   font-weight: 800;
   text-align: center;
-  color: var(--black-color);
+  color: var(--white-color);
   text-transform: capitalize;
 
   span {
@@ -79,7 +93,7 @@
   line-height: 1.5;
 
   @media screen and (min-width: 2000px) {
-    font-size: 1.75rem;
+    font-size: 1rem;
   }
 }
 
@@ -98,63 +112,14 @@
   }
 }
 
-.app__social {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
-
-  padding: 1rem;
-
-  div {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--white-color);
-    margin: 0.25rem 0;
-    border: 1px solid var(--lightGray-color);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: all 0.3s ease-in-out;
-
-    svg {
-      width: 15px;
-      height: 15px;
-      color: var(--gray-color);
-    }
-
-    &:hover {
-      background-color: var(--secondary-color);
-      border-color: var(--secondary-color);
-
-      svg {
-        color: var(--white-color);
-      }
-    }
-
-    @media screen and (min-width: 2000px) {
-      width: 70px;
-      height: 70px;
-
-      margin: 0.5rem 0;
-
-      svg {
-        width: 30px;
-        height: 30px;
-      }
-    }
-  }
-}
-
 .app__navigation {
   display: flex;
+  position: fixed;
+  right: 1rem;
+  top: 40%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   padding: 1rem;
 
   .app__navigation-dot {
@@ -167,7 +132,7 @@
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: var(--secondary-color);
+      background-color: var(--dark-green-color);
     }
 
     @media screen and (min-width: 2000px) {
@@ -177,9 +142,8 @@
   }
 }
 
-@media screen and (max-width: 500px) {
-  .app__navigation,
-  .app__social {
+@media screen and (max-width: 700px) {
+  .app__navigation {
     display: none;
   }
 

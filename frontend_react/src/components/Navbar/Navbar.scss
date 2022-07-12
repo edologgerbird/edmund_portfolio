@@ -1,39 +1,58 @@
 .app__navbar {
+  animation-duration: 0.5s;
+  animation-name: animate-fade;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+
+  @keyframes animate-fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   width: 100%;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 1rem 2rem;
-
   background: var(--white-color);
   box-shadow: 0 1px 10px 0 rgba(37, 37, 37, 0.37);
-  //   border: 1px solid rgba(255, 255, 255, 0.18);
   position: fixed;
   z-index: 2;
+  margin-top: 1rem;
 
   @media screen and (max-width: 900px) {
     background: rgba(255, 255, 255, 0);
     box-shadow: 0 1px 10px 0 rgba(37, 37, 37, 0);
   }
+
+  .open {
+    animation: fade-in 0.15s ease-in;
+  }
+  .close {
+    animation: fade-out 0.5s ease-in;
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
-
-// .app__navbar-logo {
-//   display: flex;
-//   justify-content: flex-start;
-//   align-items: center;
-
-//   img {
-//     //width: 90px;
-//     height: 20px;
-
-//     @media screen and (min-width: 2000px) {
-//       width: 180px;
-//       height: 40px;
-//     }
-//   }
-// }
 
 .app__navbar-links {
   flex: 1;
@@ -42,6 +61,7 @@
   align-items: center;
 
   list-style: none;
+  padding: 1rem 2rem;
 
   li {
     margin: 0 1rem;
@@ -53,7 +73,6 @@
       width: 100%;
       height: 1px;
       background: transparent;
-      //border-radius: 50%;
       transition: all 0.4s ease-in-out;
       margin-bottom: 5px;
     }
@@ -88,16 +107,13 @@
 .app__navbar-menu {
   width: 35px;
   height: 35px;
-  // border-radius: 50%;
   position: fixed;
   right: 2rem;
   top: 1.5rem;
-  //margin: 1.1rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: var(--primary-color);
 
   svg {
     width: 70%;
@@ -122,7 +138,6 @@
     align-items: flex-end;
     flex-direction: column;
 
-    //background: url("../../assets/bgWhite.png");
     background-color: var(--white-color);
     background-size: cover;
     background-repeat: repeat;
