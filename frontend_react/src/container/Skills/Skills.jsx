@@ -9,6 +9,7 @@ import "./Skills.scss";
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
+  const [education, setEducation] = useState([]);
 
   function sortByYear(array) {
     return array.sort(function(a, b) {
@@ -18,9 +19,18 @@ const Skills = () => {
     });
   }
 
+  function sortByName(array) {
+    return array.sort(function(a, b) {
+      var x = a.name;
+      var y = b.name;
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+  }
+
   useEffect(() => {
     const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
+    const educationQuery = '*[_type == "education"]';
 
     client.fetch(query).then((data) => {
       data = sortByYear(data);
@@ -28,7 +38,13 @@ const Skills = () => {
     });
 
     client.fetch(skillsQuery).then((data) => {
+      data = sortByName(data);
       setSkills(data);
+    });
+
+    client.fetch(educationQuery).then((data) => {
+      data = sortByYear(data);
+      setEducation(data);
     });
   }, []);
 
@@ -58,10 +74,48 @@ const Skills = () => {
           ))}
         </motion.div>
         <div className="app__skills-exp">
+          <div className="app__skills-title">
+            <h2>Education</h2>
+          </div>
+          {education.map((edu) => (
+            <motion.div className="app__skills-exp-item" key={edu.year}>
+              <div className="app__skills-exp-year">
+                <p className="bold-text-year">{edu.year}</p>
+              </div>
+              <motion.div className="app__skills-exp-works">
+                {edu.educations.map((school) => (
+                  <>
+                    <motion.div
+                      whileInView={{ opacity: [0, 1] }}
+                      transition={{ duration: 0.5 }}
+                      className="app__skills-exp-work"
+                      data-tip
+                      data-for={school.school}
+                      key={school.school}
+                    >
+                      <h4 className="bold-text">{school.school}</h4>
+                      <p className="p-text">{school.desc}</p>
+                    </motion.div>
+                    <ReactTooltip
+                      id={school.name}
+                      effect="solid"
+                      arrowColor="#fff"
+                      className="skills-tooltip"
+                    >
+                      {school.desc}
+                    </ReactTooltip>
+                  </>
+                ))}
+              </motion.div>
+            </motion.div>
+          ))}
+          <div className="app__skills-title">
+            <h2>Work Experience</h2>
+          </div>
           {experiences.map((experience) => (
             <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
-                <p className="bold-text">{experience.year}</p>
+                <p className="bold-text-year">{experience.year}</p>
               </div>
               <motion.div className="app__skills-exp-works">
                 {experience.works.map((work) => (
