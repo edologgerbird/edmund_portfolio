@@ -1,11 +1,16 @@
 .app__footer {
-  flex: 1;
   width: 100%;
   flex-direction: column;
   margin-top: 1rem;
   margin-left: 2rem;
+  .head-text {
+    margin-left: 2rem;
+  }
   @media screen and (max-width: 800px) {
     margin-left: 0rem;
+    .head-text {
+      margin-left: 0rem;
+    }
   }
 }
 
@@ -16,9 +21,9 @@
   align-items: center;
   flex-wrap: wrap;
 
-  margin: 0rem 0 14rem;
+  margin: 14rem 0 14rem;
   @media screen and (max-width: 800px) {
-    margin: 0rem 0 5rem;
+    margin: 5rem 0 8rem;
   }
 
   h4 {
@@ -48,6 +53,10 @@
     font-size: 1rem;
     font-weight: 100;
     text-align: center;
+    @media screen and (max-width: 800px) {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+    }
   }
 }
 

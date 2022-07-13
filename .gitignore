@@ -352,3 +352,6 @@ MigrationBackup/
 
 # backend_sanity stuff
 backend_sanity/node_modules/
+
+# Local Netlify folder
+.netlify

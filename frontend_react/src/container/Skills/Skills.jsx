@@ -10,11 +10,20 @@ const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
 
+  function sortByYear(array) {
+    return array.sort(function(a, b) {
+      var x = a.year;
+      var y = b.year;
+      return x > y ? -1 : x < y ? 1 : 0;
+    });
+  }
+
   useEffect(() => {
     const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
 
     client.fetch(query).then((data) => {
+      data = sortByYear(data);
       setExperiences(data);
     });
 
