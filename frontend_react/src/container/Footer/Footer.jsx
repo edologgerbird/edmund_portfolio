@@ -1,4 +1,4 @@
-import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin, AiFillCamera } from "react-icons/ai";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import "./Footer.scss";
 
@@ -21,11 +21,26 @@ const Footer = () => {
         </div>
 
         <div className="app__footer-badges">
-          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.linkedin.com/in/edmundlohht/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <AiFillLinkedin />
           </a>
-          <a href="https://www.github.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/edologgerbird"
+            target="_blank"
+            rel="noreferrer"
+          >
             <AiFillGithub />
+          </a>
+          <a
+            href="https://edmundlohphotography.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <AiFillCamera />
           </a>
         </div>
       </div>

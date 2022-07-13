@@ -9,22 +9,29 @@
 }
 
 .app__testimonial-item {
-  width: 60%;
+  width: 900px;
   min-height: 320px;
-  background-color: var(--white-color);
+  // background-color: var(--white-color);
   display: flex;
   flex-direction: row;
-  padding: 2rem;
-  border-radius: 15px;
+  padding: 1.5rem;
+  border-radius: 2px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 
   transition: all 0.3s ease-in-out;
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    background-color: var(--white-color);
+    padding: 1.2rem;
+
+    @media screen and (max-width: 800px) {
+      width: 140px;
+      height: 140px;
+    }
   }
 
   @media screen and (min-width: 2000px) {
@@ -36,8 +43,8 @@
     }
   }
 
-  @media screen and (max-width: 800px) {
-    width: 100%;
+  @media screen and (max-width: 1200px) {
+    width: 98%;
   }
 
   @media screen and (max-width: 500px) {
@@ -57,21 +64,26 @@
   align-items: flex-start;
 
   p {
-    font-size: 1.25rem;
-    line-height: 2rem;
-    color: var(--black-color);
-    font-family: var(--font-base);
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: var(--white-color);
+    font-weight: 200;
+    text-align: center;
+    // font-family: var(--font-base);
+
+    @media screen and (min-width: 500px) {
+      text-align: left;
+    }
 
     @media screen and (min-width: 2000px) {
       font-size: 1.3rem;
-      //   line-height: 3.5rem;
     }
   }
 
   h4 {
     font-weight: 600;
-    color: var(--secondary-color);
-    margin-top: 2rem;
+    color: var(--white-color);
+    margin-top: 1rem;
   }
 
   h5 {
@@ -88,13 +100,13 @@
 
 .app__testimonial-btns {
   flex-direction: row;
-  margin-top: 1rem;
+  // margin-top: 1rem;
 
   div {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--white-color);
+    // background-color: var(--white-color);
 
     margin: 1rem;
     transition: all 0.3s ease-in-out;
@@ -102,7 +114,7 @@
     svg {
       width: 20px;
       height: 20px;
-      color: var(--secondary-color);
+      color: var(--white-color);
     }
 
     &:hover {
