@@ -12,10 +12,19 @@ const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
+  function sortByTitle(array) {
+    return array.sort(function(a, b) {
+      var x = a.title;
+      var y = b.title;
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+  }
+
   useEffect(() => {
     const query = '*[_type == "works"]';
 
     client.fetch(query).then((data) => {
+      data = sortByTitle(data);
       setWorks(data);
       setFilterWork(data);
     });
@@ -47,7 +56,8 @@ const Work = () => {
           "All",
           "Machine/Deep Learning",
           "Data Engineering",
-          "React JS",
+          "Finance",
+          "ReactJS",
           "Research & Exploration",
           "Misc.",
         ].map((item, index) => (
@@ -105,14 +115,15 @@ const Work = () => {
                 </motion.div>
               </div>
 
-              <div className="app__work-content app__flex">
+              <div className="app__work-content">
                 <h4 className="bold-text">{work.title}</h4>
                 <p className="p-text" style={{ marginTop: 10 }}>
                   {work.description}
                 </p>
-
-                <div className="app__work-tag app__flex">
-                  <p className="p-text">{work.tags[0]}</p>
+                <div className="app__flex">
+                  <div className="app__work-tag app__flex">
+                    <p className="p-text">{work.tags[0]}</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
