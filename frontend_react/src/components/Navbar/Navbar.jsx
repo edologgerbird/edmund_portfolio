@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { images } from "../../constants";
 import "./Navbar.scss";
 
 const Navbar = ({ active }) => {
