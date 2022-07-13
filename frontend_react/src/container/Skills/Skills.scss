@@ -139,6 +139,11 @@
     color: var(--white-color);
   }
 
+  @media screen and (max-width: 800px) {
+    margin-right: 1rem;
+    margin-left: 2rem;
+  }
+
   @media screen and (max-width: 500px) {
     margin-right: 1rem;
   }
@@ -159,5 +164,18 @@
     font-size: 1.75rem !important;
     max-width: 500px !important;
     line-height: 2 !important;
+  }
+}
+
+.app__skills-resume {
+  padding: 3rem 0 4rem 0;
+
+  a {
+    color: var(--tertiery-color);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: var(--white-color);
   }
 }

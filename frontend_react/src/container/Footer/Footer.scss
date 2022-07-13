@@ -27,7 +27,7 @@
   }
 
   h4 {
-    font-weight: 200;
+    font-weight: 300;
     text-transform: uppercase;
     padding: 1rem 0 0.5rem 0;
     font-size: 0.8rem;
@@ -38,7 +38,7 @@
   }
 
   a {
-    font-weight: 200;
+    font-weight: 300;
     text-decoration: none;
     color: var(--tertiery-color);
     @media screen and (min-width: 2000px) {
@@ -51,7 +51,7 @@
   padding: 1rem 0 2rem 0;
   p {
     font-size: 1rem;
-    font-weight: 100;
+    font-weight: 200;
     text-align: center;
     @media screen and (max-width: 800px) {
       margin-top: 1.2rem;

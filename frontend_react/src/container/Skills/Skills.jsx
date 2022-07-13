@@ -92,6 +92,15 @@ const Skills = () => {
           ))}
         </div>
       </div>
+      <div className="app__skills-resume">
+        <a
+          href="https://www.dropbox.com/sh/v605ocql9gqc4yc/AAAp06YmdGxyyHjUYeFI0z8Qa?dl=0"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View my Full Resume
+        </a>
+      </div>
     </>
   );
 };

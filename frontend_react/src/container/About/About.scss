@@ -26,14 +26,16 @@
   padding: 2rem 1rem 0 1rem;
 
   img {
-    width: 250px;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
     margin: 0rem 2rem 1rem 2rem;
     border-radius: 50%;
-    box-shadow: 0 0px 30px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0px 30px 0 rgba(255, 255, 255, 0.3);
   }
 
   .bio-text {
-    width: 50%;
+    width: 42%;
     h4 {
       font-weight: 600;
       margin-bottom: 0.5rem;
@@ -65,8 +67,8 @@
 .app__profile-item {
   background-color: var(--white-color);
   box-shadow: 0 0px 30px 0 rgba(255, 255, 255, 0.3);
-  width: 250px;
-  height: 300px;
+  width: 300px;
+  height: 340px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
