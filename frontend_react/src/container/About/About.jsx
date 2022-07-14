@@ -18,7 +18,6 @@ const About = () => {
     });
 
     client.fetch(bioQuery).then((data) => {
-      console.log(data);
       setBio(data);
     });
   }, []);

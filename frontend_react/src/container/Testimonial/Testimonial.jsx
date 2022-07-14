@@ -10,9 +10,23 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonials, setTestimonials] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [animateChunk, setAnimateChunk] = useState({ x: 0, opacity: 1 });
 
-  const handleClick = (index) => {
-    setCurrentIndex(index);
+  const handleLeftClick = (index) => {
+    setAnimateChunk([{ x: 100, opacity: 0 }]);
+
+    setTimeout(() => {
+      setAnimateChunk([{ x: 0, opacity: 1 }]);
+      setCurrentIndex(index);
+    }, 500);
+  };
+
+  const handleRightClick = (index) => {
+    setAnimateChunk([{ x: -100, opacity: 0 }]);
+    setTimeout(() => {
+      setAnimateChunk([{ x: 0, opacity: 1 }]);
+      setCurrentIndex(index);
+    }, 500);
   };
 
   useEffect(() => {
@@ -35,25 +49,35 @@ const Testimonial = () => {
       </h2>
       {testimonials.length && (
         <>
-          <div className="app__testimonial-item app__flex">
-            <img
-              src={urlFor(testimonials[currentIndex].imgurl)}
-              alt={testimonials[currentIndex].name}
-            />
-            <div className="app__testimonial-content">
-              <p className="p-text">{testimonials[currentIndex].feedback}</p>
-              <div>
-                <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
-                <h5 className="p-text">{testimonials[currentIndex].company}</h5>
+          <motion.div
+            animate={animateChunk}
+            transition={{ duration: 0.5 }}
+            className="app__testimonial-chunk"
+          >
+            <div className="app__testimonial-item app__flex">
+              <img
+                src={urlFor(testimonials[currentIndex].imgurl)}
+                alt={testimonials[currentIndex].name}
+              />
+              <div className="app__testimonial-content">
+                <p className="p-text">{testimonials[currentIndex].feedback}</p>
+                <div>
+                  <h4 className="bold-text">
+                    {testimonials[currentIndex].name}
+                  </h4>
+                  <h5 className="p-text">
+                    {testimonials[currentIndex].company}
+                  </h5>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="app__testimonial-btns app__flex">
             <div
               className="app__flex"
               onClick={() =>
-                handleClick(
+                handleLeftClick(
                   currentIndex === 0
                     ? testimonials.length - 1
                     : currentIndex - 1
@@ -68,7 +92,7 @@ const Testimonial = () => {
             <div
               className="app__flex"
               onClick={() =>
-                handleClick(
+                handleRightClick(
                   currentIndex === testimonials.length - 1
                     ? 0
                     : currentIndex + 1

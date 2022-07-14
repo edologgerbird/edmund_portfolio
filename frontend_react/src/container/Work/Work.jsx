@@ -7,9 +7,10 @@ import { urlFor, client } from "../../client";
 import "./Work.scss";
 
 const Work = () => {
+  const defaultFilter = "Featured";
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState(defaultFilter);
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
   function sortByTitle(array) {
@@ -19,16 +20,6 @@ const Work = () => {
       return x < y ? -1 : x > y ? 1 : 0;
     });
   }
-
-  useEffect(() => {
-    const query = '*[_type == "works"]';
-
-    client.fetch(query).then((data) => {
-      data = sortByTitle(data);
-      setWorks(data);
-      setFilterWork(data);
-    });
-  }, []);
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
@@ -45,21 +36,32 @@ const Work = () => {
     }, 500);
   };
 
+  useEffect(() => {
+    const query = '*[_type == "works"]';
+
+    client.fetch(query).then((data) => {
+      data = sortByTitle(data);
+      setWorks(data);
+      data = data.filter((work) => work.tags.includes(defaultFilter));
+      setFilterWork(data);
+    });
+  }, []);
+
   return (
     <>
       <h2 className="head-text">
         My<span>Works</span>
       </h2>
-
       <div className="app__work-filter">
         {[
-          "All",
+          "Featured",
           "Machine/Deep Learning",
           "Data Engineering",
           "Finance",
           "ReactJS",
-          "Research & Exploration",
+          "Research",
           "Misc.",
+          "All",
         ].map((item, index) => (
           <div
             key={index}
@@ -86,7 +88,8 @@ const Work = () => {
             className="noDecoration"
           >
             <motion.div
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.001 }}
               className="app__work-item app__flex"
               key={index}
             >
@@ -106,7 +109,7 @@ const Work = () => {
                     <motion.div
                       whileInView={{ scale: [0, 1] }}
                       whileHover={{ scale: [1, 0.9] }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.01 }}
                       className="app__flex"
                     >
                       <AiFillGithub />
