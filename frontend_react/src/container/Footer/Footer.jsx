@@ -11,8 +11,8 @@ const Footer = () => {
       <div className="app__footer app__flex">
         <div className="app__footer-info">
           <h4>Email</h4>
-          <a href="mailto:edmundlohhongtak@gmail.com">
-            edmundlohhongtak@gmail.com
+          <a href="mailto:contact.edmundloh@gmail.com">
+            contact.edmundloh@gmail.com
           </a>
         </div>
 

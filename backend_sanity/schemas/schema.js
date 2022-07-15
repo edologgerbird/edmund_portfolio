@@ -14,6 +14,7 @@ import contact from "./contact";
 import bio from "./bio";
 import education from "./education";
 import school from "./school";
+import resume from "./resume";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -33,6 +34,6 @@ export default createSchema({
     bio,
     education,
     school,
-    /* Your types here! */
+    resume,
   ]),
 });

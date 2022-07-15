@@ -10,6 +10,7 @@ const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
   const [education, setEducation] = useState([]);
+  const [resume, setResume] = useState([]);
 
   function sortByYear(array) {
     return array.sort(function(a, b) {
@@ -31,6 +32,7 @@ const Skills = () => {
     const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
     const educationQuery = '*[_type == "education"]';
+    const resumeQuery = '*[_type == "resume"]';
 
     client.fetch(query).then((data) => {
       data = sortByYear(data);
@@ -45,6 +47,10 @@ const Skills = () => {
     client.fetch(educationQuery).then((data) => {
       data = sortByYear(data);
       setEducation(data);
+    });
+
+    client.fetch(resumeQuery).then((data) => {
+      setResume(data);
     });
   }, []);
 
@@ -146,15 +152,13 @@ const Skills = () => {
           ))}
         </div>
       </div>
-      <div className="app__skills-resume">
-        <a
-          href="https://www.dropbox.com/sh/v605ocql9gqc4yc/AAAp06YmdGxyyHjUYeFI0z8Qa?dl=0"
-          target="_blank"
-          rel="noreferrer"
-        >
-          View my Full Resume
-        </a>
-      </div>
+      {resume.map((resumeLink) => (
+        <div className="app__skills-resume">
+          <a href={resumeLink.resumeLink} target="_blank" rel="noreferrer">
+            View my Full Resume
+          </a>
+        </div>
+      ))}
     </>
   );
 };
