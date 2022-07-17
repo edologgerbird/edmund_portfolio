@@ -15,6 +15,8 @@ import bio from "./bio";
 import education from "./education";
 import school from "./school";
 import resume from "./resume";
+import publications from "./publications";
+import tags from "./tags";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -35,5 +37,7 @@ export default createSchema({
     education,
     school,
     resume,
+    publications,
+    tags,
   ]),
 });

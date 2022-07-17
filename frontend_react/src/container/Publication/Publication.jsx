@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
-import "./Work.scss";
+import "./Publication.scss";
 
-const Work = () => {
+const Publication = () => {
   const defaultFilter = "Featured";
-  const [works, setWorks] = useState([]);
   const [tagsList, setTagsList] = useState([]);
-  const [filterWork, setFilterWork] = useState([]);
+  const [publications, setPublications] = useState([]);
+  const [filterPublication, setFilterPublication] = useState([]);
   const [activeFilter, setActiveFilter] = useState(defaultFilter);
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
@@ -22,7 +22,7 @@ const Work = () => {
     });
   }
 
-  const handleWorkFilter = (item) => {
+  const handlePublicationFilter = (item) => {
     setActiveFilter(item);
     setAnimateCard([{ y: 100, opacity: 0 }]);
 
@@ -30,19 +30,21 @@ const Work = () => {
       setAnimateCard([{ y: 0, opacity: 1 }]);
 
       if (item === "All") {
-        setFilterWork(works);
+        setFilterPublication(publications);
       } else {
-        setFilterWork(works.filter((work) => work.tags.includes(item)));
+        setFilterPublication(
+          publications.filter((publication) => publication.tags.includes(item))
+        );
       }
     }, 500);
   };
 
   useEffect(() => {
-    const query = '*[_type == "works"]';
+    const query = '*[_type == "publications"]';
     const tagQuery = '*[_type == "tags"]';
 
     client.fetch(tagQuery).then((data) => {
-      data = data.filter((work) => work.page.includes("Works"));
+      data = data.filter((work) => work.page.includes("Publications"));
       console.log(data[0].tags);
       data = data[0].tags;
       setTagsList(data);
@@ -50,23 +52,23 @@ const Work = () => {
 
     client.fetch(query).then((data) => {
       data = sortByTitle(data);
-      setWorks(data);
+      setPublications(data);
       data = data.filter((work) => work.tags.includes(defaultFilter));
-      setFilterWork(data);
+      setFilterPublication(data);
     });
   }, []);
 
   return (
     <>
       <h2 className="head-text">
-        My<span>Works</span>
+        My<span>Publications</span>
       </h2>
-      <div className="app__work-filter">
+      <div className="app__publication-filter">
         {tagsList.map((item, index) => (
           <div
             key={index}
-            onClick={() => handleWorkFilter(item)}
-            className={`app__work-filter-item app__flex p-text ${
+            onClick={() => handlePublicationFilter(item)}
+            className={`app__publication-filter-item app__flex p-text ${
               activeFilter === item ? "item-active" : ""
             }`}
           >
@@ -78,11 +80,11 @@ const Work = () => {
       <motion.div
         animate={animateCard}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className="app__work-portfolio"
+        className="app__publication-portfolio"
       >
-        {filterWork.map((work, index) => (
+        {filterPublication.map((publication, index) => (
           <a
-            href={work.codeLink}
+            href={publication.articleLink}
             target="_blank"
             rel="noreferrer"
             className="noDecoration"
@@ -90,11 +92,11 @@ const Work = () => {
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.001 }}
-              className="app__work-item app__flex"
+              className="app__publication-item app__flex"
               key={index}
             >
-              <div className="app__work-img app__flex">
-                <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <div className="app__publication-img app__flex">
+                <img src={urlFor(publication.imgUrl)} alt={publication.name} />
 
                 <motion.div
                   whileHover={{ opacity: [0, 1] }}
@@ -103,29 +105,36 @@ const Work = () => {
                     ease: "easeInOut",
                     staggerChildren: 0.5,
                   }}
-                  className="app__work-hover app__flex"
+                  className="app__publication-hover app__flex"
                 >
-                  <a href={work.codeLink} target="_blank" rel="noreferrer">
+                  <a
+                    href={publication.articleLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <motion.div
                       whileInView={{ scale: [0, 1] }}
                       whileHover={{ scale: [1, 0.9] }}
                       transition={{ duration: 0.01 }}
                       className="app__flex"
                     >
-                      <AiFillGithub />
+                      <AiFillEye />
                     </motion.div>
                   </a>
                 </motion.div>
               </div>
 
-              <div className="app__work-content">
-                <h4 className="bold-text">{work.title}</h4>
+              <div className="app__publication-content">
+                <h4 className="bold-text">{publication.title}</h4>
                 <p className="p-text" style={{ marginTop: 10 }}>
-                  {work.description}
+                  {publication.description}
                 </p>
+                <div className="app__publication-platform app__flex">
+                  <p className="p-text italic-text">{publication.platform}</p>
+                </div>
                 <div className="app__flex">
-                  <div className="app__work-tag app__flex">
-                    <p className="p-text">{work.tags[0]}</p>
+                  <div className="app__publication-tag app__flex">
+                    <p className="p-text">{publication.tags[0]}</p>
                   </div>
                 </div>
               </div>
@@ -138,7 +147,7 @@ const Work = () => {
 };
 
 export default AppWrap(
-  MotionWrap(Work, "app__works"),
-  "work",
-  "app__primarybg"
+  MotionWrap(Publication, "app__publications"),
+  "publications",
+  "app__secondarybg"
 );

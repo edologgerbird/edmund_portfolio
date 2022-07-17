@@ -3,6 +3,7 @@ import React from "react";
 import { About, Footer, Header, Skills, Testimonial, Work } from "./container";
 import { Navbar } from "./components";
 import "./App.scss";
+import Publication from "./container/Publication/Publication";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Header />
       <About />
       <Work />
+      <Publication />
       <Skills />
       <Testimonial />
       <Footer />
